@@ -1,0 +1,52 @@
+﻿@model IEnumerable<PharmacyManagement.Models.Order>
+
+@{
+    ViewData["Title"] = "All Medicines";
+}
+
+<h2>@ViewData["Title"]</h2>
+
+<table class="table table-bordered">
+    <thead>
+        <tr>
+            <th>Name</th>
+            <th>Manufacturer</th>
+            <th>Price</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var order in Model)
+        {
+            <tr>
+                <td>@order.Id</td>
+                <td>@order.Date</td>
+                <td>@order.StaffId</td>
+                <td>@order.CustomerId<td>
+                <td><a href="#" onclick="GetDetails(event, @order.Id)">Details</a></td>
+            </tr>
+        }
+    </tbody>
+</table>
+<div id="Details"></div>
+
+
+@section Scripts
+{
+    <script>
+        function GetDetails(event, Id){
+            event.preventDefault();
+            $.ajax(
+                {
+                url: "/Order/PartialDetails/" + Id,
+                success: function (result) {
+                    $("#Details").html(result);
+                },
+                error: function (xhr, status, error) {
+                    console.error("AJAX error:", error);
+                    $("#Details").html("<p>Error loading details.</p>");
+                }
+            });
+        }
+    </script>
+
+}

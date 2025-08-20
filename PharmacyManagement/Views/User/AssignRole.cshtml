@@ -1,0 +1,14 @@
+﻿@model PharmacyManagement.ViewModel.AssignRoleViewModel
+
+<form asp-action="AssignRole" method="post">
+    <label>User Name:</label>
+    <input asp-for="UserName" />
+    <label>Role Name:</label>
+    <input asp-for="RoleName" />
+    <button type="submit">Assign Role</button>
+</form>
+
+@if (ViewBag.Message != null)
+{
+    <p>@ViewBag.Message</p>
+}

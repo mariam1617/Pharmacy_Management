@@ -1,0 +1,21 @@
+﻿@model Order
+<div>
+    <h1>@Model.TotalAmount<h1>
+    @if (Model.Staff!= null)
+    {
+        <h3>@Model.Staff.Name</h3>
+        
+    }
+	@if (Model.Customer != null)
+	{
+		<h3>@Model.Customer.Name</h3>
+	
+    }
+@*
+@foreach (var order in Model.OrderMedicines)
+{
+    <h4>@order.Medicine.Name</h4>
+}
+*@
+
+</div>
